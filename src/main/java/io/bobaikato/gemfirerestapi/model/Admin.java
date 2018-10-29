@@ -2,20 +2,24 @@ package io.bobaikato.gemfirerestapi.model;
 
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.PersistenceConstructor;
 import org.springframework.data.gemfire.mapping.Region;
+
+import java.util.concurrent.atomic.AtomicLong;
 
 @Region("customer")
 public class Admin {
+
+    private static AtomicLong COUNTER = new AtomicLong(0L);
 
     @Id
     private Long id;
     private String firstname;
     private String lastname;
 
-    public Admin(Long id, String firstname, String lastname) {
-        this.id = id;
-        this.firstname = firstname;
-        this.lastname = lastname;
+    @PersistenceConstructor
+    Admin() {
+        this.id = COUNTER.incrementAndGet();
     }
 
     public Long getId() {
@@ -40,9 +44,5 @@ public class Admin {
 
     public void setLastname(String lastname) {
         this.lastname = lastname;
-    }
-
-    Admin() {
-
     }
 }

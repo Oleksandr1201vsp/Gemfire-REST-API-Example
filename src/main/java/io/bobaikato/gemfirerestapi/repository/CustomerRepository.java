@@ -9,10 +9,10 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 @RepositoryRestResource(collectionResourceRel = "customer", path = "customer")
 public interface CustomerRepository extends CrudRepository<Customer, Long> {
     @Trace
-    Customer findByFirstname(@Param("firstname") String firstname);
+    Customer findByFirstName(@Param("firstName") String firstName);
 
     @Trace
-    Customer findByLastname(@Param("lastname") String lastname);
+    Customer findByLastName(@Param("lastName") String lastName);
 
     @Trace
     Iterable<Customer> findByAgeGreaterThan(@Param("age") int age);

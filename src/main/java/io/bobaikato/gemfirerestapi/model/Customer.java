@@ -5,49 +5,49 @@ import java.util.concurrent.atomic.AtomicLong;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.PersistenceConstructor;
 import org.springframework.data.gemfire.mapping.Region;
- 
+
 @Region("customer")
 public class Customer {
-	
-	private static AtomicLong COUNTER = new AtomicLong(0L);
-	
+
+    private static AtomicLong COUNTER = new AtomicLong(0L);
+
     @Id
     private Long id;
-    private String firstname;
-    private String lastname;
+    private String firstName;
+    private String lastName;
     private int age;
-     
+
     @PersistenceConstructor
-	public Customer() {
-		this.id = COUNTER.incrementAndGet();
-	}
- 
-    public String getFirstname() {
-        return firstname;
+    Customer() {
+        this.id = COUNTER.incrementAndGet();
     }
- 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
+
+    public String getFirstName() {
+        return firstName;
     }
- 
-     
-    public String getLastname() {
-        return lastname;
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
- 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+
+    public String getLastName() {
+        return lastName;
     }
-     
-    public String toString(){
-        return "firstname: " + firstname + " ,lastname: " + lastname + " ,age: " + age; 
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
- 
+
     public int getAge() {
         return age;
     }
- 
+
     public void setAge(int age) {
         this.age = age;
     }
+
+    public String toString() {
+        return "firstName: " + firstName + " ,lastName: " + lastName + " ,age: " + age;
+    }
+
 }
