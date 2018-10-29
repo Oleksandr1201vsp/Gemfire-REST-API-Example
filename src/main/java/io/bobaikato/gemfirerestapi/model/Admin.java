@@ -14,12 +14,18 @@ public class Admin {
 
     @Id
     private Long id;
-    private String firstname;
-    private String lastname;
+    private String firstName;
+    private String lastName;
 
     @PersistenceConstructor
     Admin() {
         this.id = COUNTER.incrementAndGet();
+    }
+
+    public Admin(Long id, String firstName, String lastName) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
     public Long getId() {
@@ -30,19 +36,19 @@ public class Admin {
         this.id = id;
     }
 
-    public String getFirstname() {
-        return firstname;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getLastname() {
-        return lastname;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 }
