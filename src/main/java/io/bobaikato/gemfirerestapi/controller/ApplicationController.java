@@ -20,7 +20,12 @@ public class ApplicationController {
 
     @GetMapping("admins")
     public Collection<?> getAllAdmins() {
-        adminRepository.save(new Admin(1L, "Bobai", "Kato"));
+        adminRepository.save(new Admin("FirstName", "LastName"));
+        return adminRepository.findAll();
+    }
+
+    @GetMapping("all")
+    public Collection<?> all() {
         return adminRepository.findAll();
     }
 }
