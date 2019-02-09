@@ -5,11 +5,13 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.PersistenceConstructor;
 import org.springframework.data.gemfire.mapping.Region;
 
+import java.io.Serializable;
 import java.util.concurrent.atomic.AtomicLong;
 
 @Region("customer")
-public class Admin {
+public class Admin implements Serializable {
 
+    private static final long serialVersionUID = 2053563339980357876L;
     private static AtomicLong COUNTER = new AtomicLong(0L);
 
     @Id
@@ -22,8 +24,8 @@ public class Admin {
         this.id = COUNTER.incrementAndGet();
     }
 
-    public Admin(Long id, String firstName, String lastName) {
-        this.id = id;
+    public Admin(String firstName, String lastName) {
+        this.id = COUNTER.incrementAndGet();
         this.firstName = firstName;
         this.lastName = lastName;
     }

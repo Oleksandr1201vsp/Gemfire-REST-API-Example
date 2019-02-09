@@ -1,14 +1,16 @@
 package io.bobaikato.gemfirerestapi.model;
 
-import java.util.concurrent.atomic.AtomicLong;
-
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.PersistenceConstructor;
 import org.springframework.data.gemfire.mapping.Region;
 
-@Region("customer")
-public class Customer {
+import java.io.Serializable;
+import java.util.concurrent.atomic.AtomicLong;
 
+@Region("customer")
+public class Customer implements Serializable {
+
+    private static final long serialVersionUID = -3527156810544478025L;
     private static AtomicLong COUNTER = new AtomicLong(0L);
 
     @Id
