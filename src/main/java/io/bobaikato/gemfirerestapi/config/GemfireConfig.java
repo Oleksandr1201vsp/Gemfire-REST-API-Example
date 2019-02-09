@@ -2,6 +2,7 @@ package io.bobaikato.gemfirerestapi.config;
 
 import java.util.Properties;
 
+import com.gemstone.gemfire.cache.RegionShortcut;
 import io.bobaikato.gemfirerestapi.model.Customer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -32,7 +33,8 @@ public class GemfireConfig {
        var customerRegion = new LocalRegionFactoryBean<String, Customer> ();
         customerRegion.setCache(cache);
         customerRegion.setName("customer");
-        customerRegion.setPersistent(false);
+        customerRegion.setPersistent(true);
+        customerRegion.setShortcut(RegionShortcut.LOCAL_OVERFLOW);
         return customerRegion;
     }
 }
